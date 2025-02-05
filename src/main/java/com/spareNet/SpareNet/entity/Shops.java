@@ -14,7 +14,7 @@ public class Shops {
     private String ownerName;
     private String email;
     private String phoneNumber;
-    private String status;
+    private String statuss;
     private String registeredDate;
 
     @ManyToOne
