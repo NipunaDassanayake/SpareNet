@@ -38,8 +38,8 @@ public class Shops {
             joinColumns = @JoinColumn(name = "shopId"),
             inverseJoinColumns = @JoinColumn(name = "friendlyShopId")
     )
-    private List<Shops> friendlyShops;
-
+    private List<Shops> friendlyShops; //Self-Referencing Relationship , This creates a many-to-many relationship between Shops and itself.
+                                        //Since the relationship is managed by the join table, you don’t need to create a separate FriendlyShopList entity.
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<RequestProducts> requestProducts;
 
