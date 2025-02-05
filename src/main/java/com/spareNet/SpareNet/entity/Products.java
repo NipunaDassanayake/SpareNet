@@ -12,8 +12,8 @@ public class Products {
     private Long productId;
     private String productName;
     private String model;
-    private int quantity;
-    private double unitPrice;
+    private Integer quantity;
+    private Double unitPrice;
     private String productCondition;
     private String privacy;
 

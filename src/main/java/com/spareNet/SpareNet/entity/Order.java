@@ -13,6 +13,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
     private String orderDate;
-    private double totalAmount;
+    private Double totalAmount;
     private String orderStatus;
 }
