@@ -1,10 +1,8 @@
 package com.spareNet.SpareNet.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,4 +13,16 @@ public class Order {
     private String orderDate;
     private Double totalAmount;
     private String orderStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "shopId")
+    private Shops shop;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "order_products",
+            joinColumns = @JoinColumn(name = "orderId"),
+            inverseJoinColumns = @JoinColumn(name = "productId")
+    )
+    private List<Products> products;
 }

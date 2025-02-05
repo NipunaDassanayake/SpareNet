@@ -1,10 +1,8 @@
 package com.spareNet.SpareNet.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,4 +14,7 @@ public class ShopRequest {
     private Long receiverShopId;
     private String requestDate;
     private String requestState;
+
+    @ManyToMany(mappedBy = "shopRequests", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Shops> shops;
 }

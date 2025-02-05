@@ -3,21 +3,29 @@ package com.spareNet.SpareNet.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Products {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
     private String productName;
     private String model;
-    private Integer quantity;
-    private Double unitPrice;
     private String productCondition;
-    private String privacy;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Inventory> inventories;
+
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Order> orders;
+
+    @ManyToOne
+    @JoinColumn(name = "requestProductId")
+    private RequestProducts requestProduct;
 }
