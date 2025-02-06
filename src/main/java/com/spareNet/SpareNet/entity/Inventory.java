@@ -11,7 +11,8 @@ public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long inventoryId;
-    private String privacy;
+    @Enumerated(EnumType.STRING)
+    private Privacy privacy;
     private Double unitPrice;
     private Integer quantity;
     private String visibilityStatus;
