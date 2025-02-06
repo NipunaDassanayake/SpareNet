@@ -1,6 +1,6 @@
 package com.spareNet.SpareNet.controller;
 
-import com.spareNet.SpareNet.entity.Shops;
+import com.spareNet.SpareNet.entity.Shop;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,17 +9,17 @@ import java.util.List;
 @RequestMapping("/api/shops")
 public class ShopController {
     @GetMapping
-    public List<Shops> getAllShops() {
+    public List<Shop> getAllShops() {
 return getAllShops();
     }
 
     @PostMapping
-    public void addShop(@RequestBody Shops shop) {
+    public void addShop(@RequestBody Shop shop) {
         // Implementation here
     }
 
     @PutMapping("/{id}")
-    public Shops updateShop(@PathVariable Long id, @RequestBody Shops shop) {
+    public Shop updateShop(@PathVariable Long id, @RequestBody Shop shop) {
         return shop;
     }
 

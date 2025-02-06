@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Shops {
+public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shopId;
@@ -14,14 +14,15 @@ public class Shops {
     private String ownerName;
     private String email;
     private String phoneNumber;
-    private String statuss;
+    private String status;
     private String registeredDate;
 
     @ManyToOne
     @JoinColumn(name = "adminId")
     private Admin admin;
 
-    @OneToOne(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "inventoryId")
     private Inventory inventory;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -38,7 +39,7 @@ public class Shops {
             joinColumns = @JoinColumn(name = "shopId"),
             inverseJoinColumns = @JoinColumn(name = "friendlyShopId")
     )
-    private List<Shops> friendlyShops; //Self-Referencing Relationship , This creates a many-to-many relationship between Shops and itself.
+    private List<Shop> friendlyShops; //Self-Referencing Relationship , This creates a many-to-many relationship between Shops and itself.
                                         //Since the relationship is managed by the join table, you don’t need to create a separate FriendlyShopList entity.
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<RequestProducts> requestProducts;

@@ -19,8 +19,9 @@ public class Products {
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @ManyToMany(mappedBy = "products")
-    private List<Inventory> inventories;
+    @ManyToOne
+    @JoinColumn(name = "inventoryId")
+    private Inventory inventory;
 
     @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Order> orders;

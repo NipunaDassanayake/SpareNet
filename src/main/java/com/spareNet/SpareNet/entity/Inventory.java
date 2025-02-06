@@ -16,15 +16,9 @@ public class Inventory {
     private Integer quantity;
     private String visibilityStatus;
 
-    @OneToOne
-    @JoinColumn(name = "shopId")
-    private Shops shop;
+    @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Shop> shops;
 
-    @ManyToMany
-    @JoinTable(
-            name = "inventory_product",
-            joinColumns = @JoinColumn(name = "inventoryId"), // Column for Inventory
-            inverseJoinColumns = @JoinColumn(name = "productId") // Column for Products
-    )
+    @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Products> products;
 }

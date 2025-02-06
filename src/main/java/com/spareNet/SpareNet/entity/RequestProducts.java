@@ -15,7 +15,7 @@ public class RequestProducts {
 
     @ManyToOne
     @JoinColumn(name = "shopId")
-    private Shops shop;
+    private Shop shop;
 
     @OneToMany(mappedBy = "requestProduct", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Products> products;

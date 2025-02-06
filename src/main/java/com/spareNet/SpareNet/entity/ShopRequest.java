@@ -16,5 +16,5 @@ public class ShopRequest {
     private String requestState;
 
     @ManyToMany(mappedBy = "shopRequests", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Shops> shops;
+    private List<Shop> shops;
 }

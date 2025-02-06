@@ -15,5 +15,5 @@ public class Admin {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Shops> shops;
+    private List<Shop> shops;
 }
