@@ -13,5 +13,5 @@ public class Category {
     private String categoryName;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Products> products;
+    private List<Product> products;
 }

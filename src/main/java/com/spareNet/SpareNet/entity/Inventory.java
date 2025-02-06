@@ -15,11 +15,12 @@ public class Inventory {
     private Privacy privacy;
     private Double unitPrice;
     private Integer quantity;
-    private String visibilityStatus;
+    @Enumerated(EnumType.STRING)
+    private VisibilityStatus visibilityStatus;
 
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Shop> shops;
 
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Products> products;
+    private List<Product> products;
 }

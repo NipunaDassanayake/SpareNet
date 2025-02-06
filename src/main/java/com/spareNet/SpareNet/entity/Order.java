@@ -2,6 +2,8 @@ package com.spareNet.SpareNet.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -10,9 +12,12 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-    private String orderDate;
+
+    private LocalDateTime orderDate;
     private Double totalAmount;
-    private String orderStatus;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     @ManyToOne
     @JoinColumn(name = "shopId")
@@ -24,5 +29,5 @@ public class Order {
             joinColumns = @JoinColumn(name = "orderId"),
             inverseJoinColumns = @JoinColumn(name = "productId")
     )
-    private List<Products> products;
+    private List<Product> products;
 }

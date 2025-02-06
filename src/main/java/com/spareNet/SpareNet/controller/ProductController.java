@@ -1,6 +1,6 @@
 package com.spareNet.SpareNet.controller;
 
-import com.spareNet.SpareNet.entity.Products;
+import com.spareNet.SpareNet.entity.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,17 +9,17 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductController {
     @GetMapping
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
        return getAllProducts();
     }
 
     @PostMapping
-    public void addProduct(@RequestBody Products product) {
+    public void addProduct(@RequestBody Product product) {
         // Implementation here
     }
 
     @PutMapping("/{id}")
-    public Products updateProduct(@PathVariable Long id, @RequestBody Products product) {
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
        return product;
     }
 

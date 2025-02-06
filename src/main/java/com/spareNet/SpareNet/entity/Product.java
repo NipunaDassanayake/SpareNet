@@ -2,18 +2,19 @@ package com.spareNet.SpareNet.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.List;
 
 @Data
 @Entity
-public class Products {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
     private String productName;
     private String model;
-    private String productCondition;
+
+    @Enumerated(EnumType.STRING)
+    private ProductCondition productCondition; // Changed to ENUM
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
