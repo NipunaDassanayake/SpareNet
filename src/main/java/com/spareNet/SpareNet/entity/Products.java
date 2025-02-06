@@ -19,7 +19,7 @@ public class Products {
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "products")
     private List<Inventory> inventories;
 
     @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
