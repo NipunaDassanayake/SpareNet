@@ -20,9 +20,8 @@ public class Product {
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "inventoryId")
-    private Inventory inventory;
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Inventory> inventories;
 
     @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Order> orders;
